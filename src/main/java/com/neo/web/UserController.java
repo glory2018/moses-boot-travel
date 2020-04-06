@@ -1,12 +1,15 @@
 package com.neo.web;
 
+import com.neo.config.BaseResponse;
 import com.neo.model.User;
 import com.neo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -22,15 +25,23 @@ public class UserController {
         return "user/list";
     }
 
+    @ResponseBody
+    @RequestMapping("/findUser")
+    public BaseResponse<String> findUser(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        return BaseResponse.success(user.getUsername());
+    }
+
     @RequestMapping("/toAdd")
     public String toAdd() {
         return "user/userAdd";
     }
 
+    @ResponseBody
     @RequestMapping("/add")
-    public String add(User user) {
+    public BaseResponse<String> add(User user) {
         userService.save(user);
-        return "redirect:/list";
+        return BaseResponse.success("注册成功。");
     }
 
     @RequestMapping("/toEdit")

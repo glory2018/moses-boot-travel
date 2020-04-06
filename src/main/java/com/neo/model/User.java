@@ -11,45 +11,81 @@ public class User {
     @GeneratedValue
     private long id;
     @Column(nullable = false, unique = true)
-    private String userName;
+    private String username;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false)
-    private int age;
+    @Column
+    private String email;
+    @Column
+    private String name;
+    @Column
+    private String telephone;
+    @Column
+    private String sex;
+    @Column
+    private String birthday;
 
     public long getId() {
         return id;
     }
 
-    public User setId(long id) {
+    public void setId(long id) {
         this.id = id;
-        return this;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public User setUserName(String userName) {
-        this.userName = userName;
-        return this;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public User setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
-        return this;
     }
 
-    public int getAge() {
-        return age;
+    public String getEmail() {
+        return email;
     }
 
-    public User setAge(int age) {
-        this.age = age;
-        return this;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 }

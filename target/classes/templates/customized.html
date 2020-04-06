@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>旅行计划网-定制</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script charset="utf-8" src="js/ueditor/ueditor.config.js"></script>
+    <script charset="utf-8" src="js/ueditor/ueditor.all.js"></script>
+    <script charset="utf-8" src="js/ueditor/zh-cn.js"></script>
+    <script type="text/javascript">
+        //实例化编辑器
+        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+        var content = UE.getEditor('content');
+
+        function save() {
+            var param = {
+                "describe": $("#describe").val(),
+                "title": $("#title").val(),
+                "content": content.getContent()
+            };
+            $.ajax({
+                url: "/saveCustomized",
+                type: "post",
+                data: JSON.stringify(param),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    alert(data.m);
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<!--引入头部-->
+<div id="header"></div>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="title" class="col-sm-2 control-label">标题</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="title"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="describe" class="col-sm-2 control-label">描述</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="describe"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="content" class="col-sm-2 control-label">内容</label>
+                    <div class="col-sm-10">
+                        <script id="content" type="text/plain" style="height: 300px;"></script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--引入尾部-->
+<div id="footer"></div>
+<!--导入布局js，共享header和footer-->
+<script type="text/javascript" src="js/include.js"></script>
+</body>
+</html>

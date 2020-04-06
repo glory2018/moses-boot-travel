@@ -5,8 +5,9 @@ import com.neo.model.User;
 import java.util.List;
 
 public interface UserService {
-
     public List<User> getUserList();
+
+    public User findUser(User user);
 
     public User findUserById(long id);
 
@@ -15,6 +16,4 @@ public interface UserService {
     public void edit(User user);
 
     public void delete(long id);
-
-
 }
