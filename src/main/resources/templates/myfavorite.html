@@ -7,15 +7,6 @@
     <link href="css/common.css" rel="stylesheet">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <style>
-        .tab-content .row > div {
-            margin-top: 16px;
-        }
-
-        .tab-content {
-            margin-bottom: 36px;
-        }
-    </style>
 </head>
 <body>
 <!--引入头部-->
@@ -33,39 +24,41 @@
             <div class="jx_content">
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home">
-                        <div class="row">
-                            <div class="col-md-3" th:each="route : ${routes}">
-                                <a href="route_detail">
-                                    <img src="images/collection_pic.jpg" alt="">
-                                    <div class="has_border">
-                                        <h3 th:text="${route.title}"></h3>
-                                        <div class="price">网付价<em>￥</em><strong>889</strong><em>起</em></div>
-                                    </div>
-                                </a>
-                            </div>
+                    <div role="tabpanel" class="tab-pane active" id="home" th:each="route,routeStat : ${routes}">
+                        <th:block th:if="${(routeStat.index+1) % 4 == 0}" th:utext="${'<div class=&quot;row&quot;>'}">
+                        </th:block>
+                        <div class="col-md-3">
+                            <a th:href="@{/findById(id=${route.id})}">
+                                <img src="images/collection_pic.jpg" alt="">
+                                <div class="has_border">
+                                    <h3 th:text="${route.title}"></h3>
+                                    <div class="price">网付价<em>￥</em><strong>889</strong><em>起</em></div>
+                                </div>
+                            </a>
                         </div>
+                        <th:block th:if="${(routeStat.index+1) % 4 == 0}" th:utext="${'</div>'}">
+                        </th:block>
                     </div>
                 </div>
             </div>
-<!--            <div class="pageNum">-->
-<!--                <ul>-->
-<!--                    <li><a href="">首页</a></li>-->
-<!--                    <li class="threeword"><a href="#">上一页</a></li>-->
-<!--                    <li><a href="#">1</a></li>-->
-<!--                    <li><a href="#">2</a></li>-->
-<!--                    <li><a href="#">3</a></li>-->
-<!--                    <li><a href="#">4</a></li>-->
-<!--                    <li><a href="#">5</a></li>-->
-<!--                    <li><a href="#">6</a></li>-->
-<!--                    <li><a href="#">7</a></li>-->
-<!--                    <li><a href="#">8</a></li>-->
-<!--                    <li><a href="#">9</a></li>-->
-<!--                    <li><a href="#">10</a></li>-->
-<!--                    <li class="threeword"><a href="javascript:;">下一页</a></li>-->
-<!--                    <li class="threeword"><a href="javascript:;">末页</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
+            <!--            <div class="pageNum">-->
+            <!--                <ul>-->
+            <!--                    <li><a href="">首页</a></li>-->
+            <!--                    <li class="threeword"><a href="#">上一页</a></li>-->
+            <!--                    <li><a href="#">1</a></li>-->
+            <!--                    <li><a href="#">2</a></li>-->
+            <!--                    <li><a href="#">3</a></li>-->
+            <!--                    <li><a href="#">4</a></li>-->
+            <!--                    <li><a href="#">5</a></li>-->
+            <!--                    <li><a href="#">6</a></li>-->
+            <!--                    <li><a href="#">7</a></li>-->
+            <!--                    <li><a href="#">8</a></li>-->
+            <!--                    <li><a href="#">9</a></li>-->
+            <!--                    <li><a href="#">10</a></li>-->
+            <!--                    <li class="threeword"><a href="javascript:;">下一页</a></li>-->
+            <!--                    <li class="threeword"><a href="javascript:;">末页</a></li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
         </section>
     </section>
 </div>
