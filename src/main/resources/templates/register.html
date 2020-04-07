@@ -146,8 +146,7 @@
                         // 处理服务器响应的数据  data  {flag:true,errorMsg:"注册失败"}
                         if (data.flag) {
                             // 注册成功，跳转到register_ok.html页面
-                            alert("注册成功。");
-                            // location.href = "registerOk";
+                            location.href = "logout";
                         } else {
                             // 注册失败
                             $("#errorMsg").html(data.errorMsg);

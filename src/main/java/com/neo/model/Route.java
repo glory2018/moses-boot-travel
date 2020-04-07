@@ -13,9 +13,11 @@ public class Route {
     @Column
     private String title;
     @Column
-    private String describe;
-    @Column
+    private String note;
+    @Column(length = 4000)
     private String content;
+    @Column
+    private Boolean favor;
 
     public long getId() {
         return id;
@@ -33,12 +35,12 @@ public class Route {
         this.title = title;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getNote() {
+        return note;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getContent() {
@@ -47,5 +49,13 @@ public class Route {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Boolean getFavor() {
+        return favor;
+    }
+
+    public void setFavor(Boolean favor) {
+        this.favor = favor;
     }
 }

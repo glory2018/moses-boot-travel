@@ -49,7 +49,7 @@ public class LoginController {
             request.getSession().setAttribute("user", u);
             return BaseResponse.success("登录成功。");
         } else {
-            return BaseResponse.fail("登录失败。");
+            return BaseResponse.fail("用户名或密码错误。");
         }
     }
 

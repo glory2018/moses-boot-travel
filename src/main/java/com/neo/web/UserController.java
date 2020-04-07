@@ -29,7 +29,11 @@ public class UserController {
     @RequestMapping("/findUser")
     public BaseResponse<String> findUser(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
-        return BaseResponse.success(user.getUsername());
+        if(user==null){
+            return BaseResponse.fail("用户未登录");
+        }else{
+            return BaseResponse.success(user.getUsername());
+        }
     }
 
     @RequestMapping("/toAdd")

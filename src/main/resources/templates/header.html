@@ -1,3 +1,8 @@
+<script>
+    function search() {
+        location.href = "findRouteList?title="+$("#title").val();
+    }
+</script>
 <!--引入头部-->
 <nav class="navbar navbar-default" role="navigation" style="font-size: x-large;">
     <div class="container-fluid">
@@ -8,14 +13,14 @@
             <!--向左对齐-->
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="/index">首页</a></li>
-                <li><a href="/routeList">发现</a></li>
+                <li><a href="/findRouteList">发现</a></li>
                 <li><a href="/customized">定制</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="搜索">
+                    <input type="text" id="title" name="title" placeholder="请输入路线名称" class="search_input">
                 </div>
-                <img src="images/search.png">
+                <img src="images/search.png" onclick="search();">
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li>
