@@ -40,6 +40,16 @@ public class LoginController {
         return "redirect:/logout";
     }
 
+    @RequestMapping("/manage")
+    public String manage() {
+        return "manage";
+    }
+
+    @RequestMapping("/sys")
+    public String sys() {
+        return "sys";
+    }
+
     @ResponseBody
     @RequestMapping("/login")
     public BaseResponse<String> login(HttpServletRequest request, User user) {

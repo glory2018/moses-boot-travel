@@ -31,6 +31,11 @@ public class RouteController {
         return "route_detail";
     }
 
+    @RequestMapping("/introduce")
+    public String introduce(Model model) {
+        return "introduce";
+    }
+
     @RequestMapping("/myFavorite")
     public String myFavorite(Model model) {
         List<Route> routes = routeService.findFavorite();
